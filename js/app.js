@@ -14,7 +14,7 @@ function getPlayers(){
 				if (data.stream !== null) {
 					var $logo = "<div class='list-item online'><div class='profile-img'><img src='"+ data.stream.channel.logo + "' class='avatar'></div>";
 					var $display_name = "<div class='screen-name'><a href='" + data.stream.channel.url + "' class='link' target='_blank'>" + data.stream.channel.display_name + "</a></div>";;
-					var $status = "<div class='status'><span class='current'>" + data.stream.game + " : " + data.stream.channel.status + "</span></div></div>";
+					var $status = "<div class='status'><span class='current'>" + data.stream.game + "<span class='match'> : " + data.stream.channel.status   + "</span></span></div></div>";
 
 					display.append($logo + $display_name + $status);
 
@@ -26,14 +26,13 @@ function getPlayers(){
 						type: "GET",
 						dataType: "jsonp",
 						success: function(data2){
-              console.log(data);
-								var html = "";
-								console.log(data2.display_name + " is offline");
-								html += "<div class='list-item offline'><div class='profile-img'><img src='"+ data2.logo + "' class='avatar'></div>";
-								html += "<div class='screen-name'><a href='" + data2.url + "' class='link' target='_blank'>" + data2.display_name + "</a></div>";
-								html += "<div class='status'><span class='current'>Offline</span></div></div>";
 
-								display.append(html);
+              var html = "";
+              html += "<div class='list-item offline'><div class='profile-img'><img src='"+ data2.logo + "' class='avatar'></div>";
+              html += "<div class='screen-name'><a href='" + data2.url + "' class='link' target='_blank'>" + data2.display_name + "</a></div>";
+              html += "<div class='status'><span class='current'>Offline</span></div></div>";
+
+              display.append(html);
 						}	
 					});
 				}
@@ -44,7 +43,21 @@ function getPlayers(){
 
 $(document).ready(function(){
 	getPlayers();
-	
+	$("#all").focus();
   
+  $("#all").on("click", function(){
+    $(".online").removeClass("filter");
+    $(".offline").removeClass("filter");
+  })
+  
+  $("#online").on("click", function(){
+    $(".online").removeClass("filter");
+    $(".offline").addClass("filter");
+  });
+  
+   $("#offline").on("click", function(){
+    $(".offline").removeClass("filter");
+    $(".online").addClass("filter");
+  });
 });
 

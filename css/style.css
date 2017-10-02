@@ -105,11 +105,7 @@ a:link{
 
 .status {
 	width: 55%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
 
-.current {
 }
 
 .online {
@@ -118,4 +114,19 @@ a:link{
 
 .offline {
 	background-color: #D37272;
+}
+
+.filter {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .match {
+    display: none;
+  }
+  
+  .screen-name,
+  .status {
+    text-align: center;
+  }
 }
