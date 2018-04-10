@@ -16,9 +16,9 @@ function getPlayers() {
 
 				// If stream status is active, appends status
             if (data.stream !== null) {
-               const $logo = "<div class='list-item online'><div class='profile-img'><img src='" + data.stream.channel.logo + "' class='avatar'></div>";
-               const $display_name = "<div class='screen-name'><a href='" + data.stream.channel.url + "' class='link' target='_blank'>" + data.stream.channel.display_name + "</a></div>";;
-               const $status = "<div class='status'><span class='current'>" + data.stream.game + "<span class='match'> : " + data.stream.channel.status + "</span></span></div></div>";
+               const $logo = "<tr class='list-item online'><td class='profile-img'><img src='" + data.stream.channel.logo + "' class='avatar'></td>";
+               const $display_name = "<td class='screen-name'><a href='" + data.stream.channel.url + "' class='link' target='_blank'>" + data.stream.channel.display_name + "</a></td>";
+               const $status = "<td class='status'><span class='current'>" + data.stream.game + "<span class='match'> : " + data.stream.channel.status + "</span></span></td></tr>";
 
                display.append($logo + $display_name + $status);
 
@@ -32,9 +32,9 @@ function getPlayers() {
                   success: function (data2) {
 
                      let html = "";
-                     html += "<div class='list-item offline'><div class='profile-img'><img src='" + data2.logo + "' class='avatar'></div>";
-                     html += "<div class='screen-name'><a href='" + data2.url + "' class='link' target='_blank'>" + data2.display_name + "</a></div>";
-                     html += "<div class='status'><span class='current'>Offline</span></div></div>";
+                     html += "<tr class='list-item offline'><td class='profile-img'><img src='" + data2.logo + "' class='avatar'></td>";
+                     html += "<td class='screen-name'><a href='" + data2.url + "' class='link' target='_blank'>" + data2.display_name + "</a></td>";
+                     html += "<td class='status'><span class='current'>Offline</span></td></tr>";
 
                      display.append(html);
                   }
